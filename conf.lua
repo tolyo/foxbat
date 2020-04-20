@@ -1,5 +1,6 @@
 local bg
 local logger
+local schema = require 'schema'
 if os.getenv('FG') then
     bg = false
     logger = '| tee'
@@ -11,6 +12,8 @@ box = {
     background = bg,
     log = logger,
 }
+
+schema.init()
 
 app = {
 }

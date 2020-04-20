@@ -8,7 +8,6 @@ addpaths('cpath', '.rocks/lib/lua/5.1/?.'..soext, '.rocks/lib/lua/?.'..soext, '.
 
 require 'strict'.on()
 require 'package.reload'
-local fio = require 'fio'
 
 local conf_path = os.getenv('CONF')
 if conf_path == nil then
@@ -18,7 +17,7 @@ local conf = require('config')(conf_path)
 
 local app = require 'app'
 if app ~= nil and app.init ~= nil then
-    local ok, res = xpcall(
+    xpcall(
         function()
             return app.init(conf.get('app'))
         end,
